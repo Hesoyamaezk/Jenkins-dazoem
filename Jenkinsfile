@@ -11,29 +11,14 @@ pipeline {
       }
 
     stages {
-      stage('Build') {
-          agent {
-              node {
-                  label 'linux && java11'
+        stage('Build'){
+            agent {
+                node {
+                    label 'linux && java11'
+                  }
               }
-            }
-        }
-      stage('Test') {
-          agent {
-              node {
-                  label 'linux && java11'
-              }
-            }
-        }
-      stage('Deploy') {
-          agent {
-              node {
-                  label 'linux && java11'
-              }
-            }
-        }
-    }
-
+          }
+      }
     post {
       always {
         echo 'This will always run'
