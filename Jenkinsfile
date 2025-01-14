@@ -25,7 +25,7 @@ pipeline {
                 }
                 echo "Building with author: ${env.AUTHOR} and email: ${env.EMAIL}"
                 sh './mvnw clean compile test-compile'
-                ecjo 'Build done!'
+                echo 'Build done!'
             }
         }
         stage('Test') {
