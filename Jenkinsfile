@@ -11,6 +11,25 @@ pipeline {
     }
 
     stages {
+        stage('Prepare') {
+            environment {
+                APP = credentials('dazoem_rahasia')
+              }
+            agent {
+                node {
+                    label 'linux && java11'
+                }
+            }
+            steps {
+                echo 'Preparing ....'
+                echo 'Author : ${env.AUTHOR} and Email : ${env.EMAIL}'
+                echo 'Start Job : ${env.JOB_NAME}'
+                echo 'Start Build : ${env.BUILD_NUMBER}'
+                echo 'Branch : ${env.BRANCH_NAME}'
+                echo 'App user : ${APP_USR}'
+                echo 'Preparation done!'
+            }
+        }
         stage('Build') {
             agent {
                 node {
