@@ -38,16 +38,20 @@ pipeline {
                     }
                 }
                 stages {
-                    stage('OS Setup'){
-                        agent {
-                            node 'linux && java11'
-                        }
-                    }
-                    steps {
-                        echo "Setup ${OS} ${ARC}"
-                    }
+                  stage('Install OS') {
+                    agent {
+                        node {
+                            label 'linux && java11'
+                          }
+                      }
+                      steps {
+                          echo "Installing ${OS} ${ARC} ...."
+                          echo 'OS Installation done!'
+                          sleep 5
+                      }
+                  }
                 }
-           }
+            }
         }
       
 
