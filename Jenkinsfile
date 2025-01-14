@@ -193,8 +193,13 @@ pipeline {
                 }
             }
             steps {
-                echo 'Releasing ....'
-                echo 'Releasing done!'
+              withCredentials([usernamePassword(
+                  credentialsId: 'dazoem_rahasia',
+                  usernameVariable: 'USER',
+                  passwordVariable: 'PASSWORD'
+              )]) {
+                  sh 'echo "Releasing it with -u $USER -p $PASSWORD" > "release.txt"'
+                }
             }
         }
     }
