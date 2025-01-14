@@ -22,11 +22,11 @@ pipeline {
             }
             steps {
                 echo 'Preparing ....'
-                echo 'Author : ${env.AUTHOR} and Email : ${env.EMAIL}'
-                echo 'Start Job : ${env.JOB_NAME}'
-                echo 'Start Build : ${env.BUILD_NUMBER}'
-                echo 'Branch : ${env.BRANCH_NAME}'
-                echo 'App user : ${APP_USR}'
+                echo "Author : ${env.AUTHOR} and Email : ${env.EMAIL}"
+                echo "Start Job : ${env.JOB_NAME}"
+                echo "Start Build : ${env.BUILD_NUMBER}"
+                echo "Branch : ${env.BRANCH_NAME}"
+                echo "App user : ${APP_USR}"
                 echo 'Preparation done!'
             }
         }
