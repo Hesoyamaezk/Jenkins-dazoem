@@ -10,6 +10,11 @@ pipeline {
         pollSCM('*/5 * * * *')
     }
 
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 10, unit: 'MINUTES')
+    }
+
     stages {
         stage('Prepare') {
             environment {
