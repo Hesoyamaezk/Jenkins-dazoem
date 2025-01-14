@@ -43,10 +43,6 @@ pipeline {
                             name 'OS'
                             values 'windows'
                         }
-                        axis {
-                            name 'ARC'
-                            values 'x86'
-                        }
                       }
                   }
                 stages {
