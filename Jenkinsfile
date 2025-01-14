@@ -25,7 +25,7 @@ pipeline {
 
     stages {
 
-        stage('OS Setup'){
+        stages('OS Setup'){
             matrix {
                 axes {
                     axis {
@@ -35,21 +35,19 @@ pipeline {
                     axis {
                         name 'ARC'
                         values 'x86', 'x64'
-                      }
-                  }
-              }
-              stages {
-                  stage('OS Setup') {
-                      agent {
-                          node {
-                              label 'linux && java11'
-                            }
-                      }
-                      steps {
-                          echo "setup ${OS} ${ARC}"
-                      }
-                  }
-              }
+                    }
+                }
+                stages {
+                    stage('OS Setup'){
+                        agent {
+                            node 'linux && java11'
+                        }
+                    }
+                    steps {
+                        echo "Setup ${OS} ${ARC}"
+                    }
+                }
+           }
         }
       
 
