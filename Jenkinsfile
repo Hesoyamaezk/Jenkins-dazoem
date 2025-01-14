@@ -25,7 +25,7 @@ pipeline {
 
     stages {
 
-        stages('OS Setup'){
+        stage('OS Setup'){
             matrix {
                 axes {
                     axis {
