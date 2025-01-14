@@ -6,9 +6,9 @@ pipeline {
         EMAIL = 'Ahmadwizam12@gmail.com'
     }
 
-//    triggers {
-//      pollSCM('*/5 * * * *')
-//    }
+ //    triggers {
+ //      pollSCM('*/5 * * * *')
+ //    }
 
     parameters {
       string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
@@ -37,17 +37,6 @@ pipeline {
                         values 'x86', 'x64'
                     }
                 }
-                excludes {
-                  exclude {
-                    axis {
-                      name 'OS'
-                      value 'windows'
-                    }
-                    axis {
-                      name 'ARC'
-                      value 'x86'
-                    }
-                  }
                 stages {
                   stage('Install OS') {
                     agent {
