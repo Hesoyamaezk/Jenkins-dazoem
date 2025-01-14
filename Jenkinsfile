@@ -37,8 +37,17 @@ pipeline {
                         values 'x86', 'x64'
                     }
                 }
-                excludeAxisValue 'OS', 'windows'
-                excludeAxisValue 'ARC', 'x86'
+                excludes {
+                  exclude {
+                    axis {
+                      name 'OS'
+                      value 'windows'
+                    }
+                    axis {
+                      name 'ARC'
+                      value 'x86'
+                    }
+                  }
                 stages {
                   stage('Install OS') {
                     agent {
