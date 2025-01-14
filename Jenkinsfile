@@ -11,24 +11,25 @@ pipeline {
       }
 
     stages {
-        stage('Build') {
-            agent any
-            steps {
-                echo 'Building the app'
+      stage('Build') {
+          agent {
+              node {
+                  label 'linux && java11'
+              }
             }
         }
-
-        stage('Test') {
-            agent any
-            steps {
-                echo 'Testing the app'
+      stage('Test') {
+          agent {
+              node {
+                  label 'linux && java11'
+              }
             }
         }
-
-        stage('Deploy') {
-            agent any
-            steps {
-                echo 'Deploying the app'
+      stage('Deploy') {
+          agent {
+              node {
+                  label 'linux && java11'
+              }
             }
         }
     }
