@@ -6,9 +6,9 @@ pipeline {
         EMAIL = 'Ahmadwizam12@gmail.com'
     }
 
-    triggers {
-        pollSCM('*/5 * * * *')
-    }
+//    triggers {
+//      pollSCM('*/5 * * * *')
+//    }
 
     parameters {
       string(name: "NAME", defaultValue: "Guest", description: "What is your name?")
@@ -95,13 +95,21 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+                message 'Do you want to deploy?'
+                ok 'Yes, of course'
+                submitter 'Ahmad Wizam'
+                parameters {
+                    choice(name: 'TARGET_ENV', choices: ['DEV', 'STAGING', 'PRODUCTION'], description: 'We will deploy to?')
+                  }
+            }
             agent {
                 node {
                     label 'linux && java11'
                 }
             }
             steps {
-                echo 'Deploying ....'
+                echo "Deploying to ${TARGET_ENV}"
                 echo 'Deploying done!'
             }
         }
