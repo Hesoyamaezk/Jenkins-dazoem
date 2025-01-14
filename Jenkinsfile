@@ -41,11 +41,11 @@ pipeline {
                     exclude {
                         axis {
                             name 'OS'
-                            value 'windows'
+                            values 'windows'
                         }
                         axis {
                             name 'ARC'
-                            value 'x86'
+                            values 'x86'
                         }
                       }
                   }
