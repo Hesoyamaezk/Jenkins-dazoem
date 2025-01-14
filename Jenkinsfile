@@ -27,21 +27,30 @@ pipeline {
 
 
         stage('Preparation'){
-            agent {
-                node {
-                    label 'linux && java11'
-                }
-            }
-            stages {
-                stage('Prepare Java'){
+            parallel {
+                stage('Prepare Java') {
+                    agent {
+                        node {
+                            label 'linux && java11'
+                        }
+                    }
                     steps {
                         echo 'Preparing Java ....'
+                        sh 'java -version'
+                        echo 'Java Preparation done!'
                         sleep 5
                     }
                 }
-                stage('Prepare Maven'){
+                stage('Prepare Maven') {
+                    agent {
+                        node {
+                            label 'linux && java11'
+                        }
+                    }
                     steps {
                         echo 'Preparing Maven ....'
+                        sh 'mvn -v'
+                        echo 'Maven Preparation done!'
                         sleep 5
                     }
                 }
