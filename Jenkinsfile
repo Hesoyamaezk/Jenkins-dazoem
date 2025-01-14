@@ -36,7 +36,6 @@ pipeline {
                     }
                     steps {
                         echo 'Preparing Java ....'
-                        sh 'java -version'
                         echo 'Java Preparation done!'
                         sleep 5
                     }
@@ -49,7 +48,6 @@ pipeline {
                     }
                     steps {
                         echo 'Preparing Maven ....'
-                        sh 'mvn -v'
                         echo 'Maven Preparation done!'
                         sleep 5
                     }
