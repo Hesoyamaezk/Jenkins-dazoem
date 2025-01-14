@@ -113,6 +113,22 @@ pipeline {
                 echo 'Deploying done!'
             }
         }
+        stage('Release') {
+            when {
+              expression {
+                  return params.DEPLOY;
+              }
+            }
+            agent {
+                node {
+                    label 'linux && java11'
+                }
+            }
+            steps {
+                echo 'Releasing ....'
+                echo 'Releasing done!'
+            }
+        }
     }
 
     post {
