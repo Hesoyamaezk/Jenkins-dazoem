@@ -18,9 +18,44 @@ pipeline {
                 }
             }
             steps {
+              script {
+                  for (int i = 0; i < 5; i++) {
+                    echo "Hello World ${i}"
+                  }
+                }
                 echo "Building with author: ${env.AUTHOR} and email: ${env.EMAIL}"
-                // Tambahkan langkah build Anda di sini, misalnya:
-                // sh './mvnw clean package'
+                sh './mvnw clean compile test-compile'
+                ecjo 'Build done!'
+            }
+        }
+        stage('Test') {
+            agent {
+                node {
+                    label 'linux && java11'
+                }
+            }
+            steps {
+              script {
+                  def data = [
+                    'firstName' : 'Ahmad',
+                    'lastName' : 'Wizam',
+                  ]
+                  writeJSON : file: 'data.json', json: data
+                } 
+                echo 'Testing ....'
+                sh './mvnw test'
+                echo 'Testing done!'
+            }
+        }
+        stage('Deploy') {
+            agent {
+                node {
+                    label 'linux && java11'
+                }
+            }
+            steps {
+                echo 'Deploying ....'
+                echo 'Deploying done!'
             }
         }
     }
